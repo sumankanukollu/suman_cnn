@@ -29,7 +29,7 @@
 - Can be triggered by different events (e.g. HTTP request)
 - Your function code and it's dependencies shouldn't be greater than 250MB (deployment package .zip file)
 
-![](D:\suman\personal\github_readme_suman\suman_cnn\src\Lambda-RealTimeFileProcessing.jpg)
+![](\src\Lambda-RealTimeFileProcessing.jpg)
 
 
 
@@ -52,8 +52,8 @@ The **Serverless Framework** is a free and [open-source (Links to an external si
 - It uses Amazon CloudFormation under the hood, which allows you to describe and provision all the infrastructural resources you need using a single JSON file. Once we define this file, all resources will be created in the cloud for us. 
 - Easy and fun!
 
-![](D:\suman\personal\github_readme_suman\suman_cnn\src\sls_snippet.jpg)
+![](\src\sls_snippet.jpg)
 
 # WHAT EXACTLY ARE WE GOING TO DO?
 
-![](D:\suman\personal\github_readme_suman\suman_cnn\src\WAWGTD.jpg)
+![](src\WAWGTD.jpg)
