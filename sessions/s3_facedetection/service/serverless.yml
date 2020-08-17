@@ -1,0 +1,75 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: s3facedetection
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+
+  environment:
+    MODEL_BUCKET_NAME: suman-p2-bucket
+    MODEL_FILE_NAME_KEY: model.pt
+    PREDICTOR_5_FACE_DETECTOR_KEY: shape_predictor_5_face_landmarks.dat
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:getObject
+      Resource: arn:aws:s3:::suman-p2-bucket/*
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - docutils
+      - jmespath
+      - pip
+      - python-dateutil
+      - setuptools
+      - six
+      - tensorboard
+    useStaticCache: true
+    useDonwloadCache: true
+    cacheLocation: "./cache"
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - __pycache__/**
+    - .pytest_cache/**
+    - model/**
+
+functions:
+  classify_image:
+    handler: handler.classify_image
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: classify
+          method: post
+          cors: true
+
+plugins:
+  - serverless-python-requirements
