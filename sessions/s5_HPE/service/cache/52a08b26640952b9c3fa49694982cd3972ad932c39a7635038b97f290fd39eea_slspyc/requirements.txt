@@ -1,4 +1,0 @@
-Pillow==7.2.0
-onnxruntime==1.4.0
-opencv-python-headless
-requests_toolbelt
