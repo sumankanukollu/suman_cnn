@@ -1,0 +1,4 @@
+sls config credentials --provider aws --key AKIA5T5ONA2DCD7T5PRX --secret 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
+sls create --template aws-python3 --name s4facerecognition --path service
+sls plugin install -n serverless-python-requirements
+npm run deploy
