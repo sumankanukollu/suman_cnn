@@ -17,14 +17,14 @@ function gan(url) {
 	$.ajax({
 		async: true,
 		crossDomain: true,
-		method: 'POST',
+		method: 'GET',
 		url: url,
 		processData: false,
 		contentType: false
 	})
 	.done(function (response) {
-		responseJson = JSON.parse(response);
-        console.log(responseJson);
+        console.log(response);
+		responseJson = response;
 		if(responseJson.imagebytes){
 			if(responseJson.imagebytes.length > 1){
 				document.getElementById("ItemPreview").src = responseJson.imagebytes;
