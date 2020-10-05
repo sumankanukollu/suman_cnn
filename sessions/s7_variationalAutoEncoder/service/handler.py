@@ -55,7 +55,6 @@ def s7VariationalAutoencoders(event, context):
         pil_img = Image.fromarray((im_np).astype(np.uint8))
         buff = BytesIO()
 
-        pil_img.save(buff, format="JPEG")
         new_image_string = base64.b64encode(buff.getvalue()).decode("utf-8")
         img_str = f"data:image/jpeg;base64,{new_image_string}"
         
