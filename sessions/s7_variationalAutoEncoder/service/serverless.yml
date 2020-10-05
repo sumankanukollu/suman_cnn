@@ -9,7 +9,7 @@ provider:
 
     environment:
         MODEL_BUCKET_NAME: suman-p2-bucket
-        MODEL_FILE_NAME_KEY: variableAutoEncoder.pt
+        MODEL_FILE_NAME_KEY: s7vae_bestvloss_chkpt_0324.pth
     iamRoleStatements:
         - Effect: "Allow"
           Action:
