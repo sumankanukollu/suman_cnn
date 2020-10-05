@@ -1,0 +1,61 @@
+service: s7varautoencoder
+
+provider:
+    name: aws
+    runtime: python3.8
+    stage: dev
+    region: ap-south-1
+    timeout: 60
+
+    environment:
+        MODEL_BUCKET_NAME: suman-p2-bucket
+        MODEL_FILE_NAME_KEY: variableAutoEncoder.pt
+    iamRoleStatements:
+        - Effect: "Allow"
+          Action:
+            - s3:getObject
+          Resource: arn:aws:s3:::suman-p2-bucket/*
+
+custom:
+    pythonRequirements:
+        dockerizePip: true
+        zip: true
+        slim: true
+        strip: false
+        noDeploy:
+            - docutils
+            - jmespath
+            - pip
+            - python-dateutil
+            - setuptools
+            - six
+            - tensorboard
+        useStaticCache: true
+        useDonwloadCache: true
+        cacheLocation: "./cache"
+        
+package:
+    individually: false
+    exclude:
+        - package.json
+        - package-log.json
+        - node_modules/**
+        - cache/**
+        - test/**
+        - __pycache__/**
+        - .pytest_cache/**
+        - model/**
+        
+functions:
+    main_handler:
+        handler: handler.s7VariationalAutoencoders
+        memorySize: 3008
+        timeout: 60
+        events:
+            - http:
+                path: gan
+                method: get
+                cors: true
+
+plugins:
+  - serverless-python-requirements
