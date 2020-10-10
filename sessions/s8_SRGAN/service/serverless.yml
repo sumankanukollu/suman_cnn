@@ -1,0 +1,60 @@
+service: s8SRGAN
+
+provider:
+    name: aws
+    runtime: python3.8
+    stage: dev
+    region: ap-south-1
+    timeout: 60
+
+    environment:
+        MODEL_BUCKET_NAME: suman-p2-bucket
+        MODEL_FILE_NAME_KEY: s8_SRGAN_netG_epoch_2_50.pth
+    iamRoleStatements:
+        - Effect: "Allow"
+          Action:
+            - s3:getObject
+          Resource: arn:aws:s3:::suman-p2-bucket/*
+custom:
+    pythonRequirements:
+        dockerizePip: true
+        zip: true
+        slim: true
+        strip: false
+        noDeploy:
+            - docutils
+            - jmespath
+            - pip
+            - python-dateutil
+            - setuptools
+            - six
+            - tensorboard
+        useStaticCache: true
+        useDonwloadCache: true
+        cacheLocation: "./cache"
+        
+package:
+    individually: false
+    exclude:
+        - package.json
+        - package-log.json
+        - node_modules/**
+        - cache/**
+        - test/**
+        - __pycache__/**
+        - .pytest_cache/**
+        - model/**
+        
+functions:
+    main_handler:
+        handler: handler.SRGAN
+        memorySize: 3008
+        timeout: 60
+        events:
+            - http:
+                path: srgan
+                method: post
+                cors: true
+
+plugins:
+  - serverless-python-requirements
