@@ -1,0 +1,6 @@
+https://download.pytorch.org/whl/cpu/torch-1.5.1%2Bcpu-cp36-cp36m-linux_x86_64.whl
+spacy==2.2.4
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.5/en_core_web_sm-2.2.5.tar.gz
+dill==0.3.2
+torchtext==0.3.1
+requests_toolbelt

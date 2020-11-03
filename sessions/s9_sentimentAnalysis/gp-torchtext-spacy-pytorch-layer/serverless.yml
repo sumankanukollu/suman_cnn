@@ -1,0 +1,19 @@
+service: gp-torchtext-spacy-pytorch-layer
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+
+layers:
+  gp-torchtext-spacy-pytorch-layer:
+    package:
+      artifact: torchtext_dependencies.zip
+    description: This layer contains pytorch 1.5.1, spacy 2.2.4, torchtext 0.3.1, dill 0.3.2 its dependencies
+    compatibleRuntimes: 
+      - python3.6
+    licenseInfo: GPLv3 
+    allowedAccounts: 
+      - '*'

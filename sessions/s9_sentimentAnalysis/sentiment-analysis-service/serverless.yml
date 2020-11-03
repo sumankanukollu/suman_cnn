@@ -1,0 +1,33 @@
+service: sentiment-analysis-service
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+  environment:
+    S3_BUCKET: suman-p2-bucket
+    TORCH_TEXT_FIELD: TEXT_fields_cnn2.pkl
+    MODEL_PATH: sentiment_analysis_model_cnn2_st_dct.pt 
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:getObject
+      Resource: arn:aws:s3:::suman-p2-bucket/*
+
+
+
+functions:
+  predict:
+    handler: handler.predictSentiment
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: predict
+          method: post
+          cors: true
+    layers:
+      - arn:aws:lambda:ap-south-1:936131757702:layer:gp-torchtext-spacy-pytorch-layer:2
+
