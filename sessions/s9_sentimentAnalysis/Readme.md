@@ -8,7 +8,7 @@
 
 ### AWS Spacy + Torch Text + torch Layer:
 
-* **<u>ARN</u>** : arn:aws:lambda:ap-south-1:936131757702:layer:gp-torchtext-spacy-pytorch-layer:2 
+* **<u>ARN</u>** : arn:aws:lambda:ap-south-1:    :layer:gp-torchtext-spacy-pytorch-layer:2 
 
 ## Code:
 
