@@ -1,4 +1,4 @@
-sls config credentials --provider aws --key AKIA5T5ONA2DCD7T5PRX --secret 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
+sls config credentials --provider aws --key xxxx  --secret xxxxx 
 sls create --template aws-python3 --name s9wordembeddings --path service
 sls plugin install -n serverless-python-requirements
 npm run deploy
