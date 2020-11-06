@@ -8,7 +8,7 @@
 
 ### AWS Spacy + Torch Text + torch Layer:
 
-* **<u>ARN</u>** : arn:aws:lambda:ap-south-1:936131757702:layer:gp-torchtext-spacy-pytorch-layer:2 
+* **<u>ARN</u>** : arn:aws:lambda:ap-south-1:    :layer:gp-torchtext-spacy-pytorch-layer:2 
 
 ## Code:
 
@@ -22,8 +22,10 @@
 
 ![positive](https://github.com/sumankanukollu/suman_cnn/blob/master/sessions/s9_sentimentAnalysis/snippets/s9_possitiveReview.JPG)
 
-
+![htmlpos](https://github.com/sumankanukollu/suman_cnn/blob/master/sessions/s9_sentimentAnalysis/snippets/positive.png)
 
 ###### Negative Review:
 
 ![negative](https://github.com/sumankanukollu/suman_cnn/blob/master/sessions/s9_sentimentAnalysis/snippets/s9_negativeReview.JPG)
+
+![htmlneg](https://github.com/sumankanukollu/suman_cnn/blob/master/sessions/s9_sentimentAnalysis/snippets/Negative.png)
