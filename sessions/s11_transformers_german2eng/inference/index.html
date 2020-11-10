@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>EVA-4-P2-Assingments</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="grid-x grid-margin-x" style="margin-top:2%;">
+				<h1 id='imageClassifiers'>Computer Vision</h4>
+				<div class="large-4 cell">
+					<label for="resnet34FileUpload">Please choose image file you want to classify.</label>
+					<input type="file" id="resnet34FileUpload" onchange="readURL(this);" class="btn btn-primary">
+					<img id="uploadedImage" src="" >
+				</div>
+				</br>
+				</br>
+				<div class="large-8 cell">
+					<input type="button" id="btnResNetUpload" onclick="uploadAndClassifyImage('https://k4n27qf9bc.execute-api.ap-south-1.amazonaws.com/dev/classify')" class="btn btn-primary btn-block" value="Classify Image - Resnet34">
+				</div>
+				</br>
+				<div class="large-8 cell">
+					<input type="button" id="btnResNetUpload" onclick="uploadAndClassifyImage('https://41qjwezhob.execute-api.ap-south-1.amazonaws.com/dev/classify')" class="btn btn-primary btn-block" value="Classify Image - MobileNet">
+				</div>
+				</br>
+				<div class="large-8 cell">
+					<input type="button" id="btnResNetUpload" onclick="uploadAndClassifyImage('https://67jee5etvb.execute-api.ap-south-1.amazonaws.com/dev/classify')" class="btn btn-primary btn-block" value="Face Alignment">
+				</div>
+				</br>
+                <div class="large-8 cell">
+					<input type="button" id="btnResNetUpload" onclick="uploadAndClassifyImage('https://d65u22aqf8.execute-api.ap-south-1.amazonaws.com/dev/classify')" class="btn btn-primary btn-block" value="Face Recognition">
+				</div>
+                </br>
+                <div class="large-8 cell">
+					<input type="button" id="btnResNetUpload" onclick="uploadAndClassifyImage('https://ri0c32nzv3.execute-api.ap-south-1.amazonaws.com/dev/hpe')" class="btn btn-primary btn-block" value="Human Pose Estimation">
+				</div>
+                </br>
+                <div class="large-8 cell">
+					<input type="button" id="btnResNetUpload" onclick="gan('https://pjoo5furs2.execute-api.ap-south-1.amazonaws.com/dev/hpe')" class="btn btn-primary btn-block" value="DCGAN on CAR">
+				</div>
+                </br>
+				<div class="large-8 cell">
+					<input type="button" id="btnResNetUpload" onclick="vae('https://sfvaag76j3.execute-api.ap-south-1.amazonaws.com/dev/gan')" class="btn btn-primary btn-block" value="Variational Auto Encoder">
+				</div>
+				<div>
+                </br>
+				<div class="large-8 cell">
+					<input type="button" id="btnResNetUpload" onclick="srgan('https://7vbcaffinh.execute-api.ap-south-1.amazonaws.com/dev/srgan')" class="btn btn-primary btn-block" value="Super Resolution GAN">
+				</div>
+				</br>
+				<div class="large-8 cell">
+					<div class="large-4 cell">
+						<label for="contentFileUpload">Please choose content image</label>
+						<input type="file" id="contentFileUpload" onchange="readContent(this);" class="btn btn-primary">
+						<img id="contentImage" src="" >
+					</div>
+					<div class="large-4 cell">
+						<label for="styleFileUpload">Please choose style image.</label>
+						<input type="file" id="styleFileUpload" onchange="readStyle(this);" class="btn btn-primary">
+						<img id="styleImage" src="" >
+					</div>
+					</br>
+					</br>
+					<input type="button" id="btnNeuralStyleTransfer" onclick="nst('https://gpn92bwxt9.execute-api.ap-south-1.amazonaws.com/dev/nst')" class="btn btn-primary btn-block" value="Neural Style Transfer">
+				</div>
+				</br>
+				<div class="large-8 cell">
+					<label>Enter Sentiment: </label>
+					<input type="text" id="txtSentiment">
+					<input type="button" id="btnSentiment" onclick="sentiment('https://bwzba5uckh.execute-api.ap-south-1.amazonaws.com/dev/nlp')" class="btn btn-primary btn-block" value="Sentiment Analysis">
+				</div>
+				</br>
+				<div class="large-8 cell">
+					<label>Enter Sentence in German: </label>
+					<input type="text" id="txtTranslate">
+					<input type="button" id="btnTranslate" onclick="translation('https://75t4f99u03.execute-api.ap-south-1.amazonaws.com/dev/translate')" class="btn btn-primary btn-block" value="Translation">
+				</div>
+				<div>
+					<h4>Result:</h4>
+					<p id="result"></p>
+				</div>				
+			</div>
+			<div>
+				<img id="ItemPreview" src="">
+			</div>
+		</div>
+	</body>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/upload.js"></script>
+</html>
