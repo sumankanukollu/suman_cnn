@@ -131,32 +131,49 @@ def predict_sentiment(model, sentence, min_len = 5):
     
     
 def predictSentiment(event, context):
-    print(event['body'])
-    bodyTemp = event["body"]
-    print("Body Loaded")
-    body = json.loads(bodyTemp)
-    print(body,type(body))
-    writtenMovieReview = body["writtenMovieReview"]
-    print(writtenMovieReview)
-    print(type(writtenMovieReview))
-    #model = RNN()
-    INPUT_DIM = len(TEXT.vocab)
-    EMBEDDING_DIM = 100
-    HIDDEN_DIM = 256
-    OUTPUT_DIM = 1
-    N_LAYERS = 2
-    BIDIRECTIONAL = True
-    DROPOUT = 0.5
-    PAD_IDX = TEXT.vocab.stoi[TEXT.pad_token]
+    try:
+        print(event['body'])
+        bodyTemp = event["body"]
+        print("Body Loaded")
+        body = json.loads(bodyTemp)
+        print(body,type(body))
+        writtenMovieReview = body["writtenMovieReview"]
+        print(writtenMovieReview)
+        print(type(writtenMovieReview))
 
-    predValue = predict_sentiment(model,writtenMovieReview)
-    print('### Predicted value',predValue)
-    review = "Positive" if predValue >= 0.5 else "Negative"
-    
-    response = {
-        "statusCode": 200,
-    #    "body":json.dumps(body)
-        "body": json.dumps({"input": writtenMovieReview , "predictionValue":predValue, "sentiment": review})
-    }
+        INPUT_DIM = len(TEXT.vocab)
+        EMBEDDING_DIM = 100
+        HIDDEN_DIM = 256
+        OUTPUT_DIM = 1
+        N_LAYERS = 2
+        BIDIRECTIONAL = True
+        DROPOUT = 0.5
+        PAD_IDX = TEXT.vocab.stoi[TEXT.pad_token]
 
-    return response
+        predValue = predict_sentiment(model,writtenMovieReview)
+        print('### Predicted value',predValue)
+        review = "Positive" if predValue >= 0.5 else "Negative"
+        
+        response = {
+            "statusCode": 200,
+            "headers": {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                "Access-Control-Allow-Credentials": True
+
+            },
+            "body": json.dumps({"input": writtenMovieReview , "predictionValue":predValue, "sentiment": review})
+        }
+
+        return response
+    except Exception as e:
+        print(repr(e))
+        return {
+            "statusCode": 500,
+            "headers": {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                "Access-Control-Allow-Credentials": True
+            },
+            "body": json.dumps({"error": repr(e)})
+        }

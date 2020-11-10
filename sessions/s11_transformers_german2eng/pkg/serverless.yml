@@ -1,0 +1,46 @@
+service: pkg
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+  
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - docutils
+      - jmespath
+      - pip
+      - python-dateutil
+      - setuptools
+      - six
+      - tensorboard
+    useStaticCache: true
+    useDownloadCache: true
+    cacheLocation: "./cache"
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - __pycache__/**
+    - .pytest_cache/**
+    - model/**
+
+
+functions:
+  hello:
+    handler: handler.hello
+
+plugins:
+  - serverless-python-requirements

@@ -1,0 +1,31 @@
+service: s11g2e-test
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: ap-south-1
+  timeout: 60
+  environment:
+    S3_BUCKET: suman-p2-bucket
+    SRC_FIELD: SRC_fields.pkl
+    TRG_FIELD: TRG_fields.pkl
+    MODEL_PATH: s11-german2EnglishText-encoder-decoder-full-cpu-stdict.pt
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - s3:getObject
+      Resource: arn:aws:s3:::suman-p2-bucket/*
+
+functions:
+  translateg2e:
+    handler: handler.translateg2e
+    memorySize: 3008
+    timeout: 60
+    events:
+      - http:
+          path: translate
+          method: post
+          cors: true
+    layers:
+      - arn:aws:lambda:ap-south-1:936131757702:layer:gp-torchtext-spacy-pytorch-layer:2
