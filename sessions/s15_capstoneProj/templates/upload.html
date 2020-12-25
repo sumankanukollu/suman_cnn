@@ -1,0 +1,88 @@
+<!doctype html>
+<title>Python Flask Multiple Files Upload Example</title>
+
+<style> 
+	h1 {text-align: center;}
+	.tab1 {tab-size: 2; } 
+	.submit {
+		  border: none;
+		  color: white;
+		  padding: 15px 32px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 16px;
+		  margin: 4px 2px;
+		  cursor: pointer;
+		}
+
+	.submit1 {background-color: #4CAF50;} /* Green */
+	.submit2 {background-color: #008CBA;} /* Blue */
+</style> 
+
+<h1 style="background-color:tomato;">EVA4 Phase-2 Capstone project</h1>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+
+
+<form method="post" action="/" enctype="multipart/form-data">
+	<label for="Project"><b>Project Name:</b></label>
+	<input type="text" id="pname" name="pname" value="E4P2_capstone">
+	<br><br>
+	
+	<label for="nocls"> <b> Number of classes: </b> </label>
+	<select name="nocls" value="2" id="nocls">
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+	</select>
+	<br><br>
+
+    <label for="splitds"> <b> Select Validation Dataset (default is : 20%): </b> </label>
+    <input type="range" min="0" max="100" value="20" name="val_ds_per" />
+    <!input type="submit" value="submit" />
+
+	<p style="background-color:powderblue;"  style="font-family:courier;"> <b> <i>*** Based on the number of classes you entered above, specify the class name and upload Images for each set of class </b> </i> </p>
+	
+	<label for="clsname"><b>Enter the Class name: </b></label>
+	<input type="text" id="clsname" name="clsname">
+	
+    <dl>
+		<p><input type="file" name="files[]" multiple="true" autocomplete="off" required></p> 
+		<p><input type="submit" value="create dataset"></p>
+    </dl>
+</form>
+
+<!# Train>
+<form method="post" action="/train" >
+	<p style="background-color:lightgreen;"  style="font-family:courier;"> <b> <i> *** After upload your dataset click the train button </b> </i> </p>
+	<input type="submit" value="train">
+	<br><br><br>
+    <label><b>Accuracy: </b></label>
+    {% block body %}
+        <label> {{ loss }} </label>
+    {% endblock %}    
+	
+</form>
+
+<!# Clear dataset>
+<form method="post" action="/clear" enctype="multipart/form-data">
+	<p> <input type="submit" value="clear dataset"> </p>
+</form>
+
+
