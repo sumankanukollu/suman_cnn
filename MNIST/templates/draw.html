@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MNIST_Prediction</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_draw.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
+
+</head>
+    <header>
+     Write any number [0-9] here: 
+    
+    </header>
+
+<body>
+    <form id = "myForm" action="{{ url_for('predict')}}" method="POST" enctype="multipart/form-data">
+        <canvas id="canvas", name ="draw" width="200" height="200">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                drawCanvas();
+            });
+        </script>
+        </canvas>
+        <input type="hidden" id = 'url' name="url" value="">
+        <input type="submit" id = 'predict' value="Predict" onclick="return save();">
+    </form>
+    
+    </body>
+</html>

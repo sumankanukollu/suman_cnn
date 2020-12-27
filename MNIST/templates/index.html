@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projects</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_draw.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='draw.js') }}"></script>
+
+</html>
+
+<body>
+    <div class="large-8 cell">
+    <input type="button" id="btnResNetUpload" onclick="uploadAndClassifyImage('https://k4n27qf9bc.execute-api.ap-south-1.amazonaws.com/dev/classify')" class="btn btn-primary btn-block" value="MNIST">
+    </div>
+
+
+    <form id = "myForm" action="{{ url_for('predict')}}" method="POST" enctype="multipart/form-data">
+        <input type="submit" id = 'MNIST' value="MNIST" onclick="return save();">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+    </form>
+    
+    </body>
+</html>
