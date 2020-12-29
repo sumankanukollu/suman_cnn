@@ -3,3 +3,11 @@
 3. [Python Datascience Handbook with notebook](https://jakevdp.github.io/PythonDataScienceHandbook/)
    ![image](![Book Cover](https://jakevdp.github.io/PythonDataScienceHandbook/figures/PDSH-cover.png))
 4. [DL_Pytorch](https://pytorch.org/assets/deep-learning/Deep-Learning-with-PyTorch.pdf)
+
+
+
+# 30 Machine Learning, AI, & Data Science Project Ideas 
+
+
+
+https://dev.to/hb/30-machine-learning-ai-data-science-project-ideas-gf5?utm_source=digest_mailer&utm_medium=email&utm_campaign=digest_email
