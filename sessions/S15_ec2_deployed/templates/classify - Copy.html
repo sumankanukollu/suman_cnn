@@ -1,0 +1,122 @@
+<!doctype html>
+
+<title>EVA4_P2_CapstoneProject</title>
+
+<style> 
+	h1 {text-align: center;}
+    .tab1 {tab-size: 2; } 
+</style>
+
+<h1 style="background-color:tomato;">EVA4 Phase-2 Capstone Project (Part-1)</h1>
+
+<p style="background-color:powderblue;"  style="color:red;">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes> <b>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %} </b>
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+
+<! # Upload directory form>
+<form method="post" enctype="multipart/form-data" action="upload">
+    <br><b>Project Name: </b> 
+            <input type="text" name="projectname" value = "EVA4P2_Capstoneproject"/><br/>
+    <p style="background-color:powderblue;"  style="font-family:courier;"> <b> <i>*** Upload structured folder of Image Dataset --> (Should be in format of {root_directory / sub_directory / Images})</b> </i></p>
+    <br>Choose Dataset Directory: 
+        <input type="file" name="files[]" id="files" multiple directory="" webkitdirectory="" mozdirectory=""><br/>
+    <br><input class="button" type="submit" value="Upload" name="upload" />
+    
+    <br><br><label> <b> Number of classes in the uploaded dataset : </b> </label>
+    {% block body %}
+        <label> {{ len_classList }} </label>
+    {% endblock %}
+    
+    <br><br><label> <b> Select Validation Dataset (default is : 20%): </b> </label>
+    <input type="range" min="0" max="100" value="20" name="val_ds_per" />
+    
+</form>
+
+<! # Train step>
+<form method = "POST" action = "/train">
+    {% if dspth %}
+        <br><br> 
+        <label> <b> Uploaded Path is : </b> </label>
+        <input type="text" name="<b> Uploaded Path is : </b>" value = {{dspth}}>
+    {% endif %}
+
+    {% if isUploaded %}
+        <p style="background-color:powderblue;"  style="font-family:courier;"> <b> <i>*** To start Trainning clik Train button, Once the trainning compleate results will be populated  </b> </i></p>
+    
+        <br><button>Train</button>
+    {% endif %}
+    
+
+    {% if validation %}
+        <br><br><p style="background-color:powderblue;"  style="font-family:courier;"> <b> <i>*** Validation Results  </b> </i></p>
+
+        <label> <b> Results : </b> </label>
+        Outof {{ total}} Test Images : Right Prediction = {{ correct }} and Wrong prediction = {{ wrong  }} 
+        <br><br>
+        <b> Test Accuracy is : </b> {{ test_acc }}
+    {% endif %}
+
+</form>
+
+<! # Inference part>
+{% if inference %}
+<form method = "post" action = "/inference">
+    <br><br><p style="background-color:powderblue;"  style="font-family:courier;"> <b> <i>*** Inference:  </b> </i></p>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <meta charset=utf-8 />
+    <style>
+      article, aside, figure, footer, header, hgroup, 
+      menu, nav, section { display: block; }
+    </style>
+    <body>
+        <input type='file' onchange="readURL(this);" />
+        <img id="blah" src="#" alt="your image" />
+        
+        <br><br><input type ="button" action = "submit" value = "Classify"> </input>
+    </body>
+
+    <script>
+         function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(200);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+    </script>
+</form>
+{% endif %}
+    
+
+
+<br><br><br><hr>
+<! # Clear directory>
+<form method = "post" action = "/clear">
+    <input type = "submit" value = "clear dataset"> 
+</form>
+
+<! # Back button>
+<form method = "get" action = "/">
+    <br><button> Back to home page </button>
+</form>
+
+
+
+

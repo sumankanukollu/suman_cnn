@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    <head> <title>sentiment_analysis</title>    </head>
+    <style>
+        h1 {text-align: center;}
+    </style>
+    
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  
+  <body>
+
+    <h1 style = "background-color:tomato;">2.Sentiment Analysis</h1><br><br>
+    
+    <form method="POST" action="/csvupload" enctype="multipart/form-data">
+        <label> <b> Name your Project : </b></label>
+        <input type="text" name="pname" value="" id="pname" required/>
+        <label>(* Use this name for further) </label> <br><br>
+
+        <label> <b> Upload dataset in  *csv file :</b> </label>
+        <input type="file" name="file">
+        <br><br><button>upload</button>
+        
+    </form>
+
+    <form method = "post" action = '/train_sa'>
+
+        <br><br><label> <b> Using the Dataset to Train: </b></label>
+        <input type="text" name="pname" value={{name}} id="pname" required/>
+        <!label(* Use this name for further) />
+
+        <br><br><button>Train</button>
+            
+        {% if train_dict %}
+            <br><br><label> <b> Test Loss : </b> </label>        
+            <input type = "text" value = {{train_dict['test_loss']}}>
+            <br><br><label> <b> Test Accuracy  : </b> </label>
+            <input type="text"  value = {{train_dict['test_acc']}}>
+            <br><br><label> <b> Model : </b> </label>
+            <input type="text"  value = {{train_dict['model']}}>
+            <br><br><label> <b> Model URL : </b> </label>
+            <input type="text"  value = {{train_dict['model_url']}}>
+            <br><br><label> <b> Text fileds : </b> </label>
+            <input type="text"  value = {{train_dict['text_fields_file']}}>
+            
+        {% endif%}
+        
+    </form>
+    
+
+    <! # Prediction for inference>
+    <form method = "post" action = "/predict">
+        <h3 style = "background-color:powderblue;" > <b> Enter your text below for inference: </b> </h3> 
+        <input type = "text" value = "" id="review" name="review" placeholder="write your review">
+        <button>Test</button>
+        {% if result %}
+            <br><br><label> <b> Result : </b> </label>        
+            <input type = "text" value = {{ result }}>
+            
+        {% endif%}
+    
+    </form>
+
+
+
+    <br><hr>
+    
+    <! # Back button>
+    <form method = "get" action = "/">
+        <button> Back to home page </button>
+    </form>
+    
+    {% block content %}
+        <h1>{{name}}</h1>
+        {{data | safe}}
+    {% endblock %}
+    
+    
+    <! # Clear directory>
+    <form method = "post" action = "/clear">
+        <input type = "submit" value = "clear dataset"> 
+    </form>
+
+    
+
+    
+  </body>
+</html>

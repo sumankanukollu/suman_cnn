@@ -1,0 +1,165 @@
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Jan  4 07:55:22 2021] ***
+compiled with version: 9.3.0 on 04 January 2021 06:19:08
+os: Linux-5.4.0-1029-aws #30-Ubuntu SMP Tue Oct 20 10:06:38 UTC 2020
+nodename: ip-172-31-12-154
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/suman_webapp
+detected binary path: /home/ubuntu/suman_webapp/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 31409
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address sumanwebapp.sock fd 3
+Python version: 3.8.5 (default, Jul 28 2020, 12:59:40)  [GCC 9.3.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55770a2c5030
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+[nltk_data] Downloading package stopwords to /home/ubuntu/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+/home/ubuntu/suman_webapp/venv/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+WSGI app 0 (mountpoint='') ready in 3 seconds on interpreter 0x55770a2c5030 pid: 28689 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 28689)
+spawned uWSGI worker 1 (pid: 28705, cores: 1)
+spawned uWSGI worker 2 (pid: 28706, cores: 1)
+spawned uWSGI worker 3 (pid: 28707, cores: 1)
+spawned uWSGI worker 4 (pid: 28708, cores: 1)
+spawned uWSGI worker 5 (pid: 28709, cores: 1)
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 2 seconds
+worker 3 buried after 2 seconds
+worker 4 buried after 2 seconds
+worker 5 buried after 2 seconds
+goodbye to uWSGI.
+VACUUM: unix socket sumanwebapp.sock removed.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Mon Jan  4 08:11:59 2021] ***
+compiled with version: 9.3.0 on 04 January 2021 06:19:08
+os: Linux-5.4.0-1029-aws #30-Ubuntu SMP Tue Oct 20 10:06:38 UTC 2020
+nodename: ip-172-31-12-154
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/suman_webapp
+detected binary path: /home/ubuntu/suman_webapp/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 31409
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address sumanwebapp.sock fd 3
+Python version: 3.8.5 (default, Jul 28 2020, 12:59:40)  [GCC 9.3.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x563b4541e030
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+[nltk_data] Downloading package stopwords to /home/ubuntu/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+/home/ubuntu/suman_webapp/venv/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+WSGI app 0 (mountpoint='') ready in 2 seconds on interpreter 0x563b4541e030 pid: 29356 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 29356)
+spawned uWSGI worker 1 (pid: 29375, cores: 1)
+spawned uWSGI worker 2 (pid: 29376, cores: 1)
+spawned uWSGI worker 3 (pid: 29377, cores: 1)
+spawned uWSGI worker 4 (pid: 29378, cores: 1)
+spawned uWSGI worker 5 (pid: 29379, cores: 1)
+[pid: 29379|app: 0|req: 1/1] 103.140.244.250 () {46 vars in 923 bytes} [Mon Jan  4 08:57:15 2021] GET / => generated 917 bytes in 9 msecs (HTTP/1.1 200) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 29379|app: 0|req: 2/2] 103.140.244.250 () {42 vars in 905 bytes} [Mon Jan  4 08:57:31 2021] GET /sentimentAnalysis? => generated 1733 bytes in 8 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+### CSV upload hit : ImmutableMultiDict([('file', <FileStorage: 'test.csv' ('application/vnd.ms-excel')>)])
+### Uploaded file is : test.csv
+S3 uploaded file Url is p1_test.csv
+S3 url is https://s3-ap-south-1.amazonaws.com/suman-p2-bucket/p1_test.csv
+[pid: 29379|app: 0|req: 3/3] 103.140.244.250 () {50 vars in 1199 bytes} [Mon Jan  4 08:57:52 2021] POST /csvupload => generated 5757 bytes in 225 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+/home/ubuntu/suman_webapp/datasets/p1_test.csv
+/home/ubuntu/suman_webapp/datasets/p1_test.csv downloaded from S3
+{'text': ['Professor', 'Norgaard', 'Urged', 'Obama', 'To', 'Ignore', 'Democracy', ',', 'Public', 'Opinion', ':', 'Paul', 'Joseph', 'Watson', 'Infowars', 'Climate', 'change', '...', 'http://t.co/6nWfVOAx'], 'label': '0'}
+Epoch: 01 | Epoch Time: 0m 0s
+	Train Loss: 0.677 | Train Acc: 67.61%
+	 Val. Loss: 0.680 |  Val. Acc: 65.88%
+Test Loss: 0.662 | Test Acc: 72.29%
+Test Loss: 0.662 | Test Acc: 72.29%
+S3 uploaded file Url is model.pt
+S3 url is https://s3-ap-south-1.amazonaws.com/suman-p2-bucket/model.pt
+### INPUT DIM is : 3242
+S3 uploaded file Url is TEXT_fields.pkl
+S3 url is https://s3-ap-south-1.amazonaws.com/suman-p2-bucket/TEXT_fields.pkl
+[pid: 29378|app: 0|req: 1/4] 103.140.244.250 () {50 vars in 1110 bytes} [Mon Jan  4 08:57:54 2021] POST /train_sa => generated 2386 bytes in 4161 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+### Inference Sentiment Analysis
+### User entered text is : its a good movie
+/home/ubuntu/suman_webapp/venv/lib/python3.8/site-packages/spacy/util.py:275: UserWarning: [W031] Model 'en_core_web_sm' (2.2.5) requires spaCy v2.2 and is incompatible with the current spaCy version (2.3.5). This may lead to unexpected results or runtime errors. To resolve this, download a newer compatible model or retrain your custom model with the current spaCy version. For more details and available updates, run: python -m spacy validate
+  warnings.warn(warn_msg)
+tensor([0.4621], grad_fn=<SelectBackward>)
+<class 'torch.Tensor'>
+### Inference Result is : 0.51468425989151
+### Result is : Possitive
+[pid: 29379|app: 0|req: 4/5] 103.140.244.250 () {50 vars in 1107 bytes} [Mon Jan  4 08:58:06 2021] POST /predict => generated 1870 bytes in 2206 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+
+
+
+*********** Deleted the dataset Directory ***********
+[pid: 29379|app: 0|req: 5/6] 103.140.244.250 () {50 vars in 1100 bytes} [Mon Jan  4 08:58:12 2021] POST /clear => generated 917 bytes in 1 msecs (HTTP/1.1 200) 2 headers in 80 bytes (1 switches on core 0)
+### Classification function hit
+[pid: 29379|app: 0|req: 6/7] 103.140.244.250 () {42 vars in 904 bytes} [Mon Jan  4 08:58:14 2021] GET /classification? => generated 1795 bytes in 4 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 29379|app: 0|req: 7/8] 103.140.244.250 () {40 vars in 799 bytes} [Mon Jan  4 08:59:35 2021] GET / => generated 917 bytes in 1 msecs (HTTP/1.1 200) 2 headers in 80 bytes (2 switches on core 0)
+### Classification function hit
+[pid: 29379|app: 0|req: 8/9] 103.140.244.250 () {42 vars in 899 bytes} [Mon Jan  4 08:59:37 2021] GET /classification? => generated 1795 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (2 switches on core 0)
+[pid: 29378|app: 0|req: 2/10] 103.140.244.250 () {42 vars in 886 bytes} [Mon Jan  4 09:04:40 2021] GET /? => generated 917 bytes in 1 msecs (HTTP/1.1 200) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 29377|app: 0|req: 1/11] 103.140.244.250 () {42 vars in 906 bytes} [Mon Jan  4 09:04:41 2021] GET /sentimentAnalysis? => generated 1733 bytes in 18 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 5 buried after 2 seconds
+Mon Jan  4 09:05:45 2021 - worker 4 (pid: 29378) is taking too much time to die...NO MERCY !!!
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket sumanwebapp.sock removed.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Jan  7 08:05:42 2021] ***
+compiled with version: 9.3.0 on 04 January 2021 06:19:08
+os: Linux-5.4.0-1029-aws #30-Ubuntu SMP Tue Oct 20 10:06:38 UTC 2020
+nodename: ip-172-31-18-189
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/suman_webapp
+detected binary path: /home/ubuntu/suman_webapp/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 31409
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address sumanwebapp.sock fd 3
+Python version: 3.8.5 (default, Jul 28 2020, 12:59:40)  [GCC 9.3.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x56498680e030
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+[nltk_data] Downloading package stopwords to /home/ubuntu/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+/home/ubuntu/suman_webapp/venv/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() > 0
+### Dataset dir is created
+WSGI app 0 (mountpoint='') ready in 36 seconds on interpreter 0x56498680e030 pid: 510 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 510)
+spawned uWSGI worker 1 (pid: 1352, cores: 1)
+spawned uWSGI worker 2 (pid: 1358, cores: 1)
+spawned uWSGI worker 3 (pid: 1359, cores: 1)
+spawned uWSGI worker 4 (pid: 1360, cores: 1)
+spawned uWSGI worker 5 (pid: 1361, cores: 1)
